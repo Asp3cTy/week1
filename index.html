@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS50 - Semana 0: Fundamentos e Scratch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>CS50 - Semana 0: Fundamentos da Computação e Scratch</h1>
+        <p class="subtitle">Baseado na aula de David J. Malan (Resumo por IA Gemini)</p>
+    </header>
+
+    <main>
+        <section id="introducao">
+            <h2>Boas-vindas e Introdução</h2>
+            <p>Olá a todos e bem-vindos à nossa introdução ao CS50! Meu nome (virtual) é Gemini, e hoje vamos mergulhar nos conceitos apresentados na primeira aula do renomado curso de Harvard, CS50. O Professor David Malan começa compartilhando sua própria jornada, admitindo que inicialmente se sentiu intimidado pela ciência da computação, preferindo áreas como governo e história. No entanto, ao experimentar o CS50, ele se apaixonou pela resolução de problemas e pela aplicabilidade da área em diversos campos.</p>
+
+            <div class="callout callout-info">
+                <strong>Filosofia do Curso:</strong>
+                <ul>
+                    <li><span class="key-term">Desafiador, mas Recompensador:</span> O curso é como "beber de uma mangueira de incêndio" – muita informação virá rapidamente. Mas é através do desafio e da dedicação que o aprendizado real acontece.</li>
+                    <li><span class="key-term">Foco no Progresso Individual:</span> O mais importante não é onde você termina em relação aos seus colegas, mas sim onde você termina em relação a onde <em>você</em> começou. A maioria dos alunos do CS50 nunca fez um curso de computação antes.</li>
+                    <li><span class="key-term">Comunidade e Apoio:</span> O curso oferece uma vasta rede de apoio (monitores, assistentes) e eventos comunitários (Puzzle Day, Hackathon, CS50 Fair) para tornar a experiência colaborativa e divertida.</li>
+                    <li><span class="key-term">Ciência da Computação é Resolução de Problemas:</span> No fundo, não se trata apenas de linguagens de programação (C, Python), mas sim de aprender a pensar computacionalmente e a resolver problemas de forma eficaz e colaborativa.</li>
+                </ul>
+            </div>
+        </section> <section id="representacao">
+            <h2>Parte 1: O Que é Ciência da Computação e Como Representamos Informações?</h2>
+
+            <h3>1. Definição</h3>
+            <p>Ciência da Computação é, essencialmente, o <span class="key-term">estudo da informação</span>: como representá-la e como processá-la. Mais fundamentalmente, é sobre <span class="key-term">resolução de problemas</span> aplicando o <span class="key-term">pensamento computacional</span>.</p>
+            <p>Modelo Básico de Resolução de Problemas: Temos uma <strong>Entrada</strong> (o problema) que passa por um <strong>Processamento</strong> (o "algoritmo", a caixa preta que vamos desvendar) para gerar uma <strong>Saída</strong> (a solução).</p>
+
+            <h3>2. Representando Informações: O Sistema Binário</h3>
+             <ul>
+                <li><strong>O Desafio:</strong> Como representar informações (números, letras, imagens, sons) de forma que um computador entenda?</li>
+                <li><strong>A Solução:</strong> Computadores usam eletricidade. A forma mais simples e confiável de representar informação eletricamente é com dois estados: ligado (com voltagem) ou desligado (sem voltagem).</li>
+                <li><strong>Binário (Base 2):</strong> Mapeamos esses dois estados para os dígitos <strong>0</strong> (desligado) e <strong>1</strong> (ligado). Este é o sistema <span class="key-term">binário</span>.</li>
+                <li><strong>Bit:</strong> Um único dígito binário (0 ou 1). É a menor unidade de informação. Vem de "<strong>Bi</strong>nary Digi<strong>t</strong>".</li>
+                <li><strong>Transistores:</strong> Dentro dos computadores, milhões (ou bilhões) de minúsculos interruptores chamados <span class="key-term">transistores</span> armazenam esses bits, estando ligados ou desligados.</li>
+                <li><strong>Contando em Binário:</strong>
+                    <p>Assim como no sistema <span class="key-term">decimal (Base 10)</span> que usamos (dígitos 0-9), onde cada posição representa uma potência de 10 (unidades 10<sup>0</sup>=1, dezenas 10<sup>1</sup>=10, centenas 10<sup>2</sup>=100, etc.), no sistema binário, cada posição representa uma potência de 2.</p>
+                    <p>Com 3 bits (três "lâmpadas"), as posições valem:</p>
+                     <ul>
+                        <li>Posição direita: 2<sup>0</sup> = 1 (Coluna das unidades)</li>
+                        <li>Posição meio: 2<sup>1</sup> = 2 (Coluna dos dois)</li>
+                        <li>Posição esquerda: 2<sup>2</sup> = 4 (Coluna dos quatros)</li>
+                    </ul>
+                    <p><em>Exemplos com 3 bits:</em></p>
+                    <ul>
+                        <li><code>000</code> = 0 &times; 4 + 0 &times; 2 + 0 &times; 1 = 0</li>
+                        <li><code>001</code> = 0 &times; 4 + 0 &times; 2 + 1 &times; 1 = 1</li>
+                        <li><code>010</code> = 0 &times; 4 + 1 &times; 2 + 0 &times; 1 = 2</li>
+                        <li><code>011</code> = 0 &times; 4 + 1 &times; 2 + 1 &times; 1 = 3</li>
+                        <li><code>100</code> = 1 &times; 4 + 0 &times; 2 + 0 &times; 1 = 4</li>
+                        <li>...</li>
+                        <li><code>111</code> = 1 &times; 4 + 1 &times; 2 + 1 &times; 1 = 7</li>
+                    </ul>
+                    <p>Com 3 bits, podemos representar 8 (2<sup>3</sup>) padrões diferentes, correspondendo aos números de 0 a 7.</p>
+                </li>
+                 <li><strong>Byte:</strong> Para representar informações mais úteis, agrupamos bits. Um <span class="key-term">byte</span> é um conjunto de <strong>8 bits</strong>.
+                    <ul>
+                        <li>Com 8 bits, as colunas são: 128, 64, 32, 16, 8, 4, 2, 1.</li>
+                        <li>Podemos representar 2<sup>8</sup> = 256 valores diferentes (de 0 a 255).</li>
+                    </ul>
+                 </li>
+            </ul>
+
+            <h3>3. Representando Letras</h3>
+             <ul>
+                <li><strong>O Problema:</strong> Como representar 'A', 'B', 'C', etc., usando apenas 0s e 1s?</li>
+                <li><strong>A Solução:</strong> Concordamos em <strong>mapear números para letras</strong>.</li>
+                <li><strong>ASCII (American Standard Code for Information Interchange):</strong> Um padrão antigo (usava 7 ou 8 bits) que define esses mapeamentos.
+                    <ul>
+                        <li>'A' maiúsculo = 65 (Binário: <code>01000001</code>)</li>
+                        <li>'B' maiúsculo = 66 (Binário: <code>01000010</code>)</li>
+                        <li>'H' = 72, 'I' = 73, '!' = 33. Portanto, a mensagem "HI!" seria representada pelos bytes <code>01001000</code> <code>01001001</code> <code>00100001</code>.</li>
+                    </ul>
+                 </li>
+                <li><strong>Limitação do ASCII:</strong> Com apenas 256 possibilidades, não cobre todas as línguas e símbolos do mundo.</li>
+                <li><strong>Unicode:</strong> Um padrão moderno que usa mais bits (8, 16, 24, ou 32) para representar praticamente todos os caracteres de todas as línguas, incluindo <span class="key-term">emojis</span>! Cada emoji tem um número Unicode único (ex: "cara com lágrimas de alegria" 😂). A aparência exata pode variar entre sistemas (Google, Apple, etc.) porque artistas diferentes desenham a representação visual daquele número Unicode.</li>
+            </ul>
+
+            <h3>4. Representando Cores</h3>
+             <ul>
+                <li><strong>Pixels:</strong> A tela é composta por minúsculos pontos chamados <span class="key-term">pixels</span>.</li>
+                <li><strong>RGB (Red, Green, Blue):</strong> Um modelo comum para representar cores. A ideia é misturar diferentes quantidades de luz vermelha, verde e azul para criar qualquer cor.</li>
+                <li><strong>Representação:</strong> Geralmente, usamos <strong>3 bytes (24 bits)</strong> por pixel:
+                    <ul>
+                        <li>1 byte (0-255) para a intensidade do Vermelho (R).</li>
+                        <li>1 byte (0-255) para a intensidade do Verde (G).</li>
+                        <li>1 byte (0-255) para a intensidade do Azul (B).</li>
+                    </ul>
+                </li>
+                <li><em>Exemplo:</em> O mesmo padrão de bytes <code>72, 73, 33</code> que significava "HI!" em ASCII, se interpretado como uma cor RGB (R=72, G=73, B=33), representa uma tonalidade específica de amarelo.</li>
+             </ul>
+             <div class="callout callout-warning">
+                 <strong>Contexto é Tudo!</strong> O mesmo padrão de bits pode significar coisas diferentes dependendo do software que o interpreta (editor de texto vê letras, editor de imagem vê cores).
+             </div>
+
+             <h3>5. Representando Vídeos e Som</h3>
+              <ul>
+                <li><strong>Vídeos:</strong> São simplesmente uma sequência de imagens (quadros ou <em>frames</em>) exibidas rapidamente (ex: 24 ou 30 por segundo), criando a ilusão de movimento (como um <em>flipbook</em>). Como já sabemos representar imagens (conjuntos de pixels coloridos), podemos representar vídeos. Arquivos de vídeo são grandes porque contêm muitas imagens.</li>
+                <li><strong>Som:</strong> Podemos mapear números para propriedades do som:
+                    <ul>
+                        <li>Frequência (Tom da nota: Lá, Si, Dó...)</li>
+                        <li>Volume (Intensidade)</li>
+                        <li>Duração</li>
+                        <li>(Opcional) Instrumento</li>
+                    </ul>
+                    Formatos como MP3 ou MIDI usam essas ideias (com compressão e outras técnicas).
+                </li>
+            </ul>
+        </section> <section id="algoritmos">
+            <h2>Parte 2: Resolvendo Problemas com Algoritmos e Pseudocódigo</h2>
+
+            <h3>1. Algoritmos</h3>
+             <ul>
+                <li><strong>Definição:</strong> Um <span class="key-term">algoritmo</span> é uma <strong>sequência de instruções passo a passo, finita e precisa</strong>, para resolver um problema específico. A precisão é crucial!</li>
+                <li><strong>Exemplo Clássico: Procurar um Nome na Lista Telefônica (Física)</strong>
+                     <ul>
+                        <li><em>Problema:</em> Encontrar o número de "John Harvard".</li>
+                        <li><em>Algoritmo 1 (Linear - Ineficiente):</em> Abrir na primeira página, verificar, ir para a próxima, verificar... até encontrar (ou chegar ao fim).
+                            <ul><li><em>Correto?</em> Sim.</li><li><em>Eficiente?</em> Não. Se a lista tem N páginas, pode levar até N passos.</li></ul>
+                        </li>
+                        <li><em>Algoritmo 2 (Pular Páginas):</em> Virar 2 páginas de cada vez.
+                             <ul><li><em>Correto?</em> Não diretamente (pode pular o nome). Precisa de correção (voltar 1 página se passar).</li><li><em>Eficiente?</em> Melhor (cerca de N/2 passos), mas ainda cresce linearmente com o tamanho da lista.</li></ul>
+                        </li>
+                         <li><em>Algoritmo 3 (Binário - Muito Eficiente):</em>
+                            <ol>
+                                <li>Abrir no meio da lista.</li>
+                                <li>Verificar a página. O nome está aqui?</li>
+                                <li>Se sim, achou!</li>
+                                <li>Se o nome que procuro vem <em>antes</em> do que está na página do meio, jogue fora a metade direita da lista e repita o passo 1 na metade esquerda restante.</li>
+                                <li>Se o nome que procuro vem <em>depois</em>, jogue fora a metade esquerda e repita o passo 1 na metade direita restante.</li>
+                                <li>Se não está na página e não há mais páginas para dividir, o nome não está na lista.</li>
+                             </ol>
+                             <ul><li><em>Correto?</em> Sim.</li><li><em>Eficiente?</em> Muito! A cada passo, o tamanho do problema é reduzido pela metade. Para N páginas, leva aproximadamente log<sub>2</sub> N passos. (Ex: 1000 páginas ≈ 10 passos; 2000 páginas ≈ 11 passos).</li></ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2. Analisando a Eficiência</h3>
+             <ul>
+                 <li>Visualmente, podemos comparar algoritmos (Gráfico Tempo vs Tamanho do Problema):
+                     <ul>
+                        <li>Algoritmo Linear: Linha reta crescente ($\approx N$ ou $\approx N/2$).</li>
+                        <li>Algoritmo Logarítmico (Busca Binária): Curva que achata ($\approx log_2 N$).</li>
+                    </ul>
+                 </li>
+                <li>Algoritmos mais eficientes são cruciais para lidar com grandes volumes de dados (Big Data, IA, buscas na web).</li>
+            </ul>
+
+            <h3>3. Pseudocódigo</h3>
+            <p>Uma forma de escrever um algoritmo usando linguagem natural estruturada, antes de traduzir para uma linguagem de programação real. Ajuda a planejar.</p>
+            <p><em>Exemplo (Algoritmo 3 da Lista Telefônica):</em></p>
+            <pre><code class="language-pseudocode">
+1 Pegue a lista telefônica
+2 Abra no meio da lista
+3 Olhe a página
+4 SE a pessoa está na página
+5    Ligue para a pessoa
+6 SENÃO SE a pessoa vem antes no livro
+7    Abra no meio da metade esquerda
+8    Volte para o passo 3
+9 SENÃO SE a pessoa vem depois no livro
+10   Abra no meio da metade direita
+11   Volte para o passo 3
+12 SENÃO
+13   Desista (nome não encontrado)
+            </code></pre>
+
+            <h3>4. Conceitos Fundamentais de Programação (Identificados no Pseudocódigo)</h3>
+             <ul>
+                <li><span class="key-term">Funções:</span> Ações ou verbos (Pegar, Abrir, Olhar, Ligar, Desistir). Representam tarefas.</li>
+                <li><span class="key-term">Condicionais:</span> Tomada de decisão (SE, SENÃO SE, SENÃO). Permitem caminhos diferentes baseados em condições. A indentação geralmente indica o que pertence a cada condição.</li>
+                <li><span class="key-term">Expressões Booleanas:</span> As perguntas dentro dos condicionais que resultam em Verdadeiro/Falso (ou Sim/Não). Ex: "a pessoa está na página?".</li>
+                <li><span class="key-term">Loops (Laços):</span> Repetição (Volte para o passo 3). Permitem executar código múltiplas vezes. É importante garantir que os loops terminem (no exemplo, o problema diminui a cada passo).</li>
+                <li><span class="key-term">Bugs:</span> Erros no código. Podem ocorrer se não considerarmos todos os cenários (como o passo 13) ou se a lógica estiver errada. O famoso "congelamento" ou reinicialização inesperada pode ser um bug.</li>
+            </ul>
+
+            <h3>5. Inteligência Artificial (Breve Visão)</h3>
+             <ul>
+                <li>Chatbots simples poderiam ser (mal) implementados com muitos condicionais (SE diz "oi", responda "oi"; SE diz "tchau", responda "tchau"...). Isso não escala.</li>
+                <li>IA moderna (ChatGPT, etc.) usa <strong>Grandes Modelos de Linguagem (LLMs)</strong> e <strong>Redes Neurais</strong>.</li>
+                <li>Elas são "treinadas" com enormes quantidades de dados (textos, imagens). A rede aprende padrões e probabilidades para gerar a resposta mais provável a uma pergunta, em vez de ter cada resposta pré-programada.</li>
+                <li><strong>CS50 AI (Duck Debugger):</strong> O CS50 tem sua própria ferramenta de IA, inspirada na "depuração com pato de borracha" (explicar seu problema para um objeto inanimado ajuda a encontrar a solução). A IA do CS50 é projetada para <em>guiar</em> o aluno, não dar a resposta pronta.</li>
+            </ul>
+        </section> <section id="scratch">
+            <h2>Parte 3: Introdução ao Scratch</h2>
+
+            <h3>1. Por Que Scratch?</h3>
+             <ul>
+                <li>Após ver a sintaxe "assustadora" de linguagens como C (<code>#include &lt;stdio.h&gt;</code>, <code>printf</code>, <code>;</code>, <code>{}</code>), focaremos primeiro nos <em>conceitos</em> de programação.</li>
+                <li>Scratch é uma <span class="key-term">linguagem de programação visual</span> criada pelo MIT.</li>
+                <li>Usa <strong>blocos de encaixar</strong> (como peças de quebra-cabeça) em vez de texto.</li>
+                <li><strong>Vantagens:</strong>
+                     <ul>
+                        <li>Evita erros de sintaxe (ponto e vírgula esquecido, etc.).</li>
+                        <li>Foca na lógica e nos conceitos (funções, loops, condicionais, etc.).</li>
+                        <li>É divertido e permite criar jogos, animações e histórias interativas.</li>
+                        <li>Cria um modelo mental que facilitará o aprendizado de linguagens textuais depois.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2. Interface do Scratch</h3>
+             <ul>
+                <li><strong>Paleta de Blocos (Esquerda):</strong> Blocos coloridos por categoria (Movimento, Aparência, Som, Eventos, Controle, Sensores, Operadores, Variáveis, Meus Blocos).</li>
+                <li><strong>Área de Código (Meio):</strong> Onde você arrasta e monta os blocos para criar seus programas (scripts).</li>
+                <li><strong>Palco (Canto Superior Direito):</strong> Onde seu programa roda. É o "mundo" do seu projeto.</li>
+                <li><strong>Sprites:</strong> Personagens ou objetos no Palco que você programa (o padrão é um gato). Você pode adicionar mais sprites.</li>
+                <li><strong>Coordenadas do Palco:</strong> Um plano cartesiano (X, Y). O centro é (0, 0). X vai de -240 (esquerda) a +240 (direita). Y vai de -180 (baixo) a +180 (cima).</li>
+            </ul>
+
+            <h3>3. Exemplos e Conceitos no Scratch</h3>
+              <ul>
+                 <li><strong>"Olá, Mundo":</strong>
+                     <ul>
+                        <li>Bloco <code>quando bandeira verde clicada</code> (Eventos)</li>
+                        <li>Bloco <code>diga [Olá, mundo]</code> (Aparência)</li>
+                        <li><em>Conceito:</em> Função, Argumento, Efeito Colateral.</li>
+                    </ul>
+                 </li>
+                 <li><strong>Interação (Perguntar o Nome):</strong>
+                     <ul>
+                        <li>Bloco <code>pergunte [...] e espere</code> (Sensores)</li>
+                        <li>Variável <code>resposta</code> (Sensores) - Valor de Retorno</li>
+                        <li>Bloco <code>junte [...] [...]</code> (Operadores) - Concatenação</li>
+                        <li>Usar saída de um bloco como entrada de outro (Aninhamento).</li>
+                    </ul>
+                 </li>
+                 <li><strong>Repetição (Miar 3 Vezes):</strong>
+                     <ul>
+                        <li>Bloco <code>toque o som [...]</code> (Som), Bloco <code>espere [...] seg</code> (Controle)</li>
+                        <li>Repetir manualmente é ruim.</li>
+                        <li>Loop <code>repita [N]</code> (Controle) é melhor design.</li>
+                    </ul>
+                 </li>
+                 <li><strong>Criando Funções Próprias (Abstração):</strong>
+                     <ul>
+                        <li>"Meus Blocos" -> "Criar Bloco" (ex: <code>miar [n] vezes</code>).</li>
+                        <li>Define a implementação (o que o bloco faz) usando outros blocos.</li>
+                        <li>O <code>n</code> é um Parâmetro/Entrada.</li>
+                        <li>Permite reutilizar e simplificar o código principal.</li>
+                        <li><em>Conceito:</em> <span class="key-term">Abstração</span> - esconder detalhes.</li>
+                    </ul>
+                 </li>
+                 <li><strong>Eventos e Condicionais (Acariciar o Gato):</strong>
+                     <ul>
+                        <li>Loop <code>sempre</code> (Controle).</li>
+                        <li>Condicional <code>se &lt; &gt; então</code> (Controle).</li>
+                        <li>Expressão Booleana <code>&lt;tocando em [...]?&gt;</code> (Sensores).</li>
+                        <li>Outros eventos como <code>quando [movimento do vídeo] &gt; [...]</code> (Extensão).</li>
+                        <li><em>Conceitos:</em> Loops Infinitos, Condicionais, Booleanos, <span class="key-term">Eventos</span>.</li>
+                    </ul>
+                 </li>
+                 <li><strong>Jogos (Oscartime, Ivy's Hardest Game):</strong> Demonstram a combinação de todos esses conceitos:
+                     <ul>
+                        <li>Múltiplos sprites.</li>
+                        <li>Detecção de colisão.</li>
+                        <li>Movimento controlado pelo usuário e autônomo.</li>
+                        <li>Variáveis (pontuação, vidas).</li>
+                        <li>Níveis, aleatoriedade.</li>
+                    </ul>
+                 </li>
+             </ul>
+              <div class="callout callout-tip">
+                <strong>Dica de Programação:</strong> Comece pequeno e adicione recursos gradualmente. Programar geralmente leva mais tempo do que o esperado!
+             </div>
+        </section> <section id="conclusao-final">
+            <h2>Conclusão da Semana 0</h2>
+            <p>Cobrimos os fundamentos: o que é ciência da computação, como computadores usam binário para representar tudo (números, texto, cores, etc.), o que são algoritmos e como analisá-los, e os blocos de construção básicos da programação (funções, loops, condicionais, etc.) usando a ferramenta visual Scratch.</p>
+            <p>Na próxima semana, começaremos a transição para linguagens baseadas em texto como C, mas os conceitos que aprendemos aqui com Scratch serão a base para tudo o que faremos a seguir!</p>
+            <p>Lembre-se: o mais importante é o seu progresso pessoal. Divirta-se explorando e criando com o Scratch no Problem Set 0!</p>
+            <p><em>(Tradicionalmente, a aula termina com um bolo!)</em></p>
+        </section> </main>
+
+    <footer>
+        <p>Conteúdo baseado na Semana 0 do curso CS50 de Harvard. Última atualização do conteúdo base: 27/04/2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

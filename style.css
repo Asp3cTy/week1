@@ -1,0 +1,335 @@
+/* style.css - Versão Moderna com Dark Mode e Animações */
+
+/* Variáveis CSS Globais (Tema Claro - Padrão) */
+:root {
+    --background-color: #f4f7f9; /* Fundo muito claro, levemente azulado/acinzentado */
+    --card-bg-color: #ffffff; /* Fundo branco para áreas de conteúdo */
+    --text-color: #212529; /* Texto escuro, quase preto */
+    --secondary-text-color: #6c757d; /* Texto secundário (cinza) */
+    --primary-color: #0056b3; /* Azul primário um pouco mais escuro */
+    --primary-color-light: #007bff; /* Azul mais claro para hover/links */
+    --border-color: #dee2e6; /* Borda clara */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --code-bg-color: #e9ecef; /* Fundo para código */
+    --code-text-color: #333; /* Cor do texto do código */
+    --scrollbar-track-color: #f1f1f1;
+    --scrollbar-thumb-color: #c1c1c1;
+
+    /* Cores Callout (Claro) */
+    --info-border: #17a2b8;
+    --info-bg: #e2f6f9;
+    --info-text: #0c5460;
+    --warning-border: #ffc107;
+    --warning-bg: #fff9e6;
+    --warning-text: #856404;
+    --tip-border: #28a745;
+    --tip-bg: #eaf6ec;
+    --tip-text: #155724;
+
+    /* Transições */
+    --transition-speed: 0.3s;
+    --transition-func: ease;
+}
+
+/* Variáveis CSS para Modo Escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1f24; /* Fundo escuro */
+        --card-bg-color: #22272c; /* Fundo de card ligeiramente mais claro */
+        --text-color: #c9d1d9; /* Texto claro, não branco puro */
+        --secondary-text-color: #8b949e; /* Texto secundário (cinza claro) */
+        --primary-color: #58a6ff; /* Azul primário mais brilhante para contraste */
+        --primary-color-light: #79b8ff; /* Azul ainda mais claro para hover */
+        --border-color: #444c56; /* Borda mais escura, mas visível */
+        --shadow-color: rgba(0, 0, 0, 0.3); /* Sombra no modo escuro (pode ser sutil) */
+        --code-bg-color: #2d333b; /* Fundo escuro diferente para código */
+        --code-text-color: #c9d1d9; /* Texto claro para código */
+        --scrollbar-track-color: #22272c;
+        --scrollbar-thumb-color: #555c64;
+
+
+        /* Cores Callout (Escuro) */
+        --info-border: #39a8bb;
+        --info-bg: #1d3b47;
+        --info-text: #a1d6e1;
+        --warning-border: #d4aa0d;
+        --warning-bg: #4d3c0a;
+        --warning-text: #f1d171;
+        --tip-border: #34a853;
+        --tip-bg: #1a4b30;
+        --tip-text: #89d29a;
+    }
+}
+
+/* Reset básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para links internos (se houver) */
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.7;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    transition: background-color var(--transition-speed) var(--transition-func), color var(--transition-speed) var(--transition-func); /* Animação na troca de tema */
+    font-size: 16px; /* Tamanho base */
+}
+
+/* Layout Principal e "Cards" */
+header, main, footer {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 25px 30px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: background-color var(--transition-speed) var(--transition-func),
+                border-color var(--transition-speed) var(--transition-func),
+                box-shadow var(--transition-speed) var(--transition-func);
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+main section {
+    margin-bottom: 45px;
+    padding-bottom: 25px;
+    border-bottom: 1px dashed var(--border-color); /* Separador mais sutil */
+    opacity: 0; /* Para animação de fade-in */
+    transform: translateY(20px); /* Para animação de slide-in */
+    animation: fadeInSlideUp 0.6s ease-out forwards;
+}
+
+/* Animação para Seções */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adiciona um delay para cada seção aparecer sequencialmente */
+main section:nth-child(1) { animation-delay: 0.1s; }
+main section:nth-child(2) { animation-delay: 0.2s; }
+main section:nth-child(3) { animation-delay: 0.3s; }
+main section:nth-child(4) { animation-delay: 0.4s; }
+/* Adicione mais se necessário */
+
+
+main section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Tipografia */
+h1, h2, h3 {
+    color: var(--primary-color);
+    transition: color var(--transition-speed) var(--transition-func);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.5em; /* Maior */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header .subtitle {
+    color: var(--secondary-text-color);
+    font-style: italic;
+    font-size: 1.1em;
+    transition: color var(--transition-speed) var(--transition-func);
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: var(--text-color); /* H3 um pouco menos destacado */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 18px;
+}
+
+ul, ol {
+    margin-left: 30px;
+    margin-bottom: 18px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: var(--primary-color-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed) var(--transition-func), text-decoration var(--transition-speed) var(--transition-func);
+}
+
+a:hover, a:focus {
+    color: var(--primary-color);
+    text-decoration: underline;
+    outline: none; /* Remove outline padrão no focus, se desejado */
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+    color: var(--secondary-text-color); /* Em itálico e um pouco mais sutil */
+}
+
+/* Estilo para Código */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: var(--code-bg-color);
+    color: var(--code-text-color);
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+    font-size: 0.875em; /* Um pouco menor que o texto normal */
+    transition: background-color var(--transition-speed) var(--transition-func), color var(--transition-speed) var(--transition-func);
+}
+
+pre {
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 18px;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: background-color var(--transition-speed) var(--transition-func), border-color var(--transition-speed) var(--transition-func);
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 1.6;
+    font-size: 0.9em;
+    color: var(--code-text-color); /* Garante que o texto dentro use a variável correta */
+}
+
+/* Chamadas de Atenção (Callouts) */
+.callout {
+    padding: 18px 25px;
+    margin: 25px 0;
+    border-left: 6px solid;
+    border-radius: 8px;
+    transition: background-color var(--transition-speed) var(--transition-func),
+                border-color var(--transition-speed) var(--transition-func),
+                color var(--transition-speed) var(--transition-func),
+                transform var(--transition-speed) var(--transition-func),
+                box-shadow var(--transition-speed) var(--transition-func);
+    position: relative; /* Para pseudo-elementos (ícones futuros) */
+}
+
+.callout:hover {
+    transform: translateY(-3px); /* Leve elevação no hover */
+    box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.callout ul { margin-left: 20px; margin-bottom: 0; }
+.callout li { margin-bottom: 5px; }
+.callout strong { display: block; margin-bottom: 8px; font-size: 1.1em; }
+
+.callout-info { border-color: var(--info-border); background-color: var(--info-bg); color: var(--info-text); }
+.callout-info strong { color: var(--info-border); }
+
+.callout-warning { border-color: var(--warning-border); background-color: var(--warning-bg); color: var(--warning-text); }
+.callout-warning strong { color: var(--warning-border); }
+
+.callout-tip { border-color: var(--tip-border); background-color: var(--tip-bg); color: var(--tip-text); }
+.callout-tip strong { color: var(--tip-border); }
+
+/* Destaque de Termos Chave */
+.key-term {
+    color: var(--primary-color);
+    font-weight: 700; /* Mais forte que bold normal */
+    /* background-color: color-mix(in srgb, var(--primary-color) 15%, transparent); */ /* Fundo sutil da cor primária */
+    /* padding: 0.1em 0.2em; */
+    /* border-radius: 3px; */
+    transition: color var(--transition-speed) var(--transition-func);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-color);
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+    transition: border-color var(--transition-speed) var(--transition-func), color var(--transition-speed) var(--transition-func);
+}
+
+/* Estilização da Barra de Rolagem (Opcional, funciona em navegadores WebKit/Blink) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-text-color); /* Mais escuro no hover */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px; /* Levemente menor em telas pequenas */
+    }
+    header, main, footer {
+        padding: 20px;
+        margin: 15px auto;
+    }
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.6em; }
+    h3 { font-size: 1.3em; }
+    pre { padding: 12px; }
+    .callout { padding: 15px 20px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; }
+     ul, ol { margin-left: 20px; }
+}
